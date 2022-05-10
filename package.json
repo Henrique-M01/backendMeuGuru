@@ -1,0 +1,26 @@
+{
+  "name": "backendmeuguru",
+  "version": "1.0.0",
+  "description": "Backend desenvolvido para o desafio pratico da empresa MeuGuru",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Henrique-M01/backendMeuGuru.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Henrique-M01/backendMeuGuru/issues"
+  },
+  "homepage": "https://github.com/Henrique-M01/backendMeuGuru#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.32",
+    "prisma": "^3.14.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
+  }
+}

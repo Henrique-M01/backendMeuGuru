@@ -13,4 +13,6 @@ userRouter.get('/name',validateName, UserController.getByName);
 
 userRouter.delete('/:id', UserController.deleteUser);
 
+userRouter.post('/create', UserController.createUser);
+
 export default userRouter;

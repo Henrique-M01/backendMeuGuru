@@ -55,9 +55,24 @@ async function deleteUser(req: Request, res: Response, next: NextFunction) {
   }
 }
 
+async function createUser(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { name, email, password } = req.body;
+
+    const created = await UsersService.createUser(name, email, password);
+
+    if (!created) return res.status(400).json({ message: 'User already exists' });
+
+    return res.status(201).json(created);
+  } catch (error) {
+    next(error);
+  }
+}
+
 export default {
   getAll,
   getByEmail,
   getByName,
   deleteUser,
+  createUser,
 };

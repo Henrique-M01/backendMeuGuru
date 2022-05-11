@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import * as bcrypt from 'bcrypt';
 
 const PRISMA = new PrismaClient();
 
@@ -34,4 +35,31 @@ async function deleteUser(id: number) {
   return deleted;
 }
 
-export default { getAll, getByEmail, getByName, deleteUser };
+async function createUser(name: string, email: string, password: string) {
+  const userExist = await PRISMA.users.findFirst({
+    where: { email }
+  })
+
+  if (userExist) return null;
+
+  const SALT_ROUNDS = 10;
+
+  const passwordHash = await bcrypt.hash(password, SALT_ROUNDS)
+
+
+  const created = await PRISMA.users.create({
+    data: { name, email , password: passwordHash },
+  });
+
+  if (!created) return null;
+
+  return { id: created.id, name: created.name, email: created.email };
+}
+
+export default {
+  getAll,
+  getByEmail,
+  getByName,
+  deleteUser,
+  createUser,
+};

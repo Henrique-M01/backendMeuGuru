@@ -41,4 +41,23 @@ async function getByName(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-export default { getAll, getByEmail, getByName };
+async function deleteUser(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { id } = req.params;
+
+    const deleted = await UsersService.deleteUser(Number(id));
+
+    if (!deleted) return res.status(404).json({ message: 'User not found' });
+
+    return res.status(200).json({ message: 'User deleted successfully' })
+  } catch (error) {
+    next(error);
+  }
+}
+
+export default {
+  getAll,
+  getByEmail,
+  getByName,
+  deleteUser,
+};

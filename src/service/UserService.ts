@@ -26,4 +26,12 @@ async function getByName(name: string) {
   return user;
 }
 
-export default { getAll, getByEmail, getByName };
+async function deleteUser(id: number) {
+  const deleted = await PRISMA.users.delete({ where: { id } });
+
+  if (!deleted) return null;
+
+  return deleted;
+}
+
+export default { getAll, getByEmail, getByName, deleteUser };

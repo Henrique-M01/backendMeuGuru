@@ -1,9 +1,21 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "outDir": "dist",
+    "target": "es5",  
+    "module": "commonjs",
+    "outDir": "./build",
+    "rootDir": "./src",
     "strict": true,
-    "lib": ["esnext"],
-    "esModuleInterop": true
-  }
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "paths": {
+      "*": [
+          "node_modules/*",
+          "src/types/*"
+      ],
+    }
+  },
+  "include": ["src/**/*"],
 }

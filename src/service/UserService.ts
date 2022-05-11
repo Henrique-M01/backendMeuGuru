@@ -56,10 +56,32 @@ async function createUser(name: string, email: string, password: string) {
   return { id: created.id, name: created.name, email: created.email };
 }
 
+async function updateUser(id: number, name: string, email: string, password: string) {
+  const userExist = await PRISMA.users.findUnique({
+    where: { id }
+  })
+
+  if (!userExist) return null;
+
+  const SALT_ROUNDS = 10;
+
+  const passwordHash = await bcrypt.hash(password, SALT_ROUNDS)
+
+  const updated = await PRISMA.users.update({
+    data: { name, email, password: passwordHash },
+    where: { id },
+  })
+
+  if (!updated) return null;
+
+  return { id: updated.id, name: updated.name, email: updated.email };
+}
+
 export default {
   getAll,
   getByEmail,
   getByName,
   deleteUser,
   createUser,
+  updateUser,
 };

@@ -69,10 +69,26 @@ async function createUser(req: Request, res: Response, next: NextFunction) {
   }
 }
 
+async function updateUser(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { name, email, password } = req.body;
+    const { id } = req.params;
+
+    const updated = await UsersService.updateUser(Number(id), name, email, password);
+
+    if (!updated) return res.status(404).json({ message: 'User not found' });
+
+    return res.status(200).json(updated);
+  } catch (error) {
+    next(error);
+  }
+}
+
 export default {
   getAll,
   getByEmail,
   getByName,
   deleteUser,
   createUser,
+  updateUser,
 };

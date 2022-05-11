@@ -8,4 +8,6 @@ userRouter.get('/all', UserController.getAll);
 
 userRouter.get('/email', validateEmail, UserController.getByEmail);
 
+userRouter.get('/name', UserController.getByName);
+
 export default userRouter;

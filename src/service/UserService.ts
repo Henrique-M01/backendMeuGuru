@@ -18,4 +18,12 @@ async function getByEmail(email: string) {
   return user;
 }
 
-export default { getAll, getByEmail };
+async function getByName(name: string) {
+  const user = await PRISMA.users.findFirst({ where: { name } });
+
+  if (!user) return null;
+
+  return user;
+}
+
+export default { getAll, getByEmail, getByName };

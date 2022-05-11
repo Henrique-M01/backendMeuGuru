@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 
 const PRISMA = new PrismaClient();
 
@@ -10,4 +10,12 @@ async function getAll() {
   return allUsers;
 }
 
-export default { getAll };
+async function getByEmail(email: string) {
+  const user = await PRISMA.users.findFirst({ where: { email }});
+
+  if (!user) return null;
+
+  return user;
+}
+
+export default { getAll, getByEmail };

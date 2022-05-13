@@ -11,22 +11,6 @@ async function getAll() {
   return allUsers;
 }
 
-async function getByEmail(email: string) {
-  const user = await PRISMA.users.findFirst({ where: { email }});
-
-  if (!user) return null;
-
-  return user;
-}
-
-async function getByName(name: string) {
-  const user = await PRISMA.users.findFirst({ where: { name } });
-
-  if (!user) return null;
-
-  return user;
-}
-
 async function deleteUser(id: number) {
   const deleted = await PRISMA.users.delete({ where: { id } });
 
@@ -79,8 +63,6 @@ async function updateUser(id: number, name: string, email: string, password: str
 
 export default {
   getAll,
-  getByEmail,
-  getByName,
   deleteUser,
   createUser,
   updateUser,

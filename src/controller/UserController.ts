@@ -13,34 +13,6 @@ async function getAll(_req: Request, res: Response, next: NextFunction) {
   };
 };
 
-async function getByEmail(req: Request, res: Response, next: NextFunction) {
-  try {
-    const { email } = req.body;
-
-    const user = await UsersService.getByEmail(email);
-
-    if (!user) return res.status(404).json({ message: 'User not found' });
-
-    return res.status(200).json(user);
-  } catch (error) {
-    next(error);
-  }
-}
-
-async function getByName(req: Request, res: Response, next: NextFunction) {
-  try {
-    const { name } = req.body;
-
-    const user = await UsersService.getByName(name);
-
-    if (!user) return res.status(404).json({ message: 'User not found' });
-
-    return res.status(200).json(user);
-  } catch (error) {
-    next(error);
-  }
-}
-
 async function deleteUser(req: Request, res: Response, next: NextFunction) {
   try {
     const { id } = req.params;
@@ -86,8 +58,6 @@ async function updateUser(req: Request, res: Response, next: NextFunction) {
 
 export default {
   getAll,
-  getByEmail,
-  getByName,
   deleteUser,
   createUser,
   updateUser,

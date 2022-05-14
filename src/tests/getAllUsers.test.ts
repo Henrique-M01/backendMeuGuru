@@ -40,7 +40,7 @@ describe('Ao fazer uma requisicao GET a rota /user/all', () => {
     UserStub.restore();
   });
 
-  it('Retorna a resposta 200 e todos os usuarios do banco dentro de um array', async () => {
+  it('Retorna o status 200 e todos os usuarios do banco dentro de um array', async () => {
     UserStub.resolves(mock);
 
     const chaiHttpResponse = await request(app).get('/users/all');
@@ -50,7 +50,7 @@ describe('Ao fazer uma requisicao GET a rota /user/all', () => {
     expect(users).to.be.an('array');
   })
 
-  it('Retorna a resposta 404 e com uma mensagem na corpo da resposta', async () => {
+  it('Retorna o status 404 e a mensagem correta no corpo da requisicao', async () => {
     UserStub.resolves(mockFail);
 
     const chaiHttpResponse = await request(app).get('/users/all');

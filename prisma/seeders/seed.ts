@@ -1,7 +1,7 @@
 import prisma from '../Connection';
 
 async function seedTable() {
-  const userOne = await prisma.users.upsert({
+  await prisma.users.upsert({
     where: { id: 1 },
     update: {},
     create: {
@@ -11,7 +11,7 @@ async function seedTable() {
     }
   });
 
-  const userTwo = await prisma.users.upsert({
+  await prisma.users.upsert({
     where: { id: 2 },
     update: {},
     create: {
@@ -21,7 +21,7 @@ async function seedTable() {
     }
   });
 
-  const userTree = await prisma.users.upsert({
+  await prisma.users.upsert({
     where: { id: 3 },
     update: {},
     create: {
@@ -31,7 +31,7 @@ async function seedTable() {
     }
   });
 
-  const userFour = await prisma.users.upsert({
+  await prisma.users.upsert({
     where: { id: 4 },
     update: {},
     create: {

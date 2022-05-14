@@ -7,12 +7,12 @@ Desafio realizado como desafio tecnico da empresa MeuGuru.
 # Frontend
 
 O frontend foi desenvolvido em outro repositorio, [disponivel aqui.](https://github.com/Henrique-M01/frontendMeuGuru)
-No README.md do repositorio, voce encontrar mais informcaoes de como prosseguir para visualiza-la.
+No README.md do repositorio, voce encontrara mais informcaoes de como prosseguir para visualiza-la.
 
 ## Técnologias usadas
 
 Back-end:
-> Desenvolvido usando: NodeJS, ExpressJS, Postgres, ES6, Typescript
+> Desenvolvido usando: NodeJS, ExpressJS, Postgres, ES6, Typescript, Prisma
 
 
 ## Instalando Dependências
@@ -30,7 +30,11 @@ npm install
 
   ```
   npm run db:start // Isso ira resetar o banco de dados hospedados no heroku.
-  npm start // Isso ira colocar a aplicacao no ar, na porta 3010(Voce pode altera-la no arquivo .env a variavel PORT)
+
+  // O prisma ira perguntar se voce quer resetar todo banco de dados, aperte 'y' para confirmar.
+
+  npm start // Isso ira colocar a aplicacao no ar,
+  na porta 3010(Voce pode altera-la no arquivo .env a variavel PORT)
 
   ```
 
